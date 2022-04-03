@@ -1,0 +1,26 @@
+{
+  "name": "pizza42-auth0",
+  "version": "1.0.0",
+  "description": "Sample SPA using Vanilla JS and Auth0 APIS for Pizza42",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node bin/www",
+    "dev": "nodemon bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bisrat-K/Pizza42-Auth0.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bisrat-K/Pizza42-Auth0/issues"
+  },
+  "homepage": "https://github.com/Bisrat-K/Pizza42-Auth0#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "helmet": "^5.0.2",
+    "morgan": "^1.10.0"
+  }
+}

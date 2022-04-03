@@ -1,0 +1,204 @@
+body {
+  background: var(--background-color);
+  color: #000000;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+:root {
+  --icon-size: 2rem;
+  --indicator-spacing: calc(var(--icon-size) / 8);
+  --border-radius: calc(var(--icon-size) / 4);
+  --nav-item-padding: calc(var(--icon-size) / 2);
+  --background-color: #ffffff;
+  /* --background-color-dark: rgb(251, 76, 126); */
+  --nav-color: #8ee4af;
+  --nav-indicator-color: #379683;
+}
+
+.body-container {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100vh;
+  scrollbar-color: #6969dd #e0e0e0;
+
+}
+
+::-webkit-scrollbar {
+  width: 0.3em; 
+  height: 0.2em;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(44, 37, 27, 0.3); 
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(44, 37, 27, 0.5); 
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #2c251b; 
+}
+
+
+.bottom-nav-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.navbar-container {
+  position: fixed !important;
+  bottom: 0;
+  background-color: var(--nav-color);
+  border-radius: var(--border-radius);
+  width: max-content;
+  margin: 0 auto;
+  margin-top: 10rem;
+  padding: 0 calc(var(--nav-item-padding) * 1.5);
+  z-index: 10;
+}
+
+.navbar-list {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  z-index: 11;
+}
+
+.navbar-list a {
+  color: #333;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--nav-item-padding);
+  z-index: 11;
+}
+
+.navbar-list .text {
+  font-size: .8em;
+  opacity: 0;
+  pointer-events: none;
+  transition: 250ms ease-in-out;
+  position: absolute;
+  bottom: calc(.5 * var(--nav-item-padding));
+  transform: translateY(50%);
+  z-index: 11;
+}
+
+.navbar-list .icon {
+  position: relative;
+  transition: 250ms ease-in-out;
+  z-index: 11;
+}
+
+.navbar-list .icon svg {
+  fill: currentColor;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  display: block;
+  z-index: 11;
+}
+
+.navbar-list .active .text {
+  pointer-events: all;
+  opacity: 1;
+  transform: translateY(0);
+  z-index: inherit;
+}
+
+.navbar-list .active .icon {
+  transform: translateY(calc(-50% - var(--nav-item-padding)));
+  z-index: inherit;
+}
+
+.navbar-list {
+  position: relative;
+}
+
+.indicator {
+  position: absolute;
+  left: calc(var(--position) * (var(--icon-size) + var(--nav-item-padding) * 2));
+  transition: 250ms ease-in-out;
+}
+
+.indicator::after,
+.indicator::before {
+  content: "";
+  position: absolute;
+  border-radius: 100%;
+}
+
+.indicator::after {
+  background-color: var(--nav-indicator-color);
+  width: calc(var(--icon-size) * 2);
+  height: calc(var(--icon-size) * 2);
+  top: calc(-1 * var(--icon-size));
+}
+
+.indicator::before {
+  background-color: var(--background-color);
+  width: calc((var(--icon-size) + var(--indicator-spacing)) * 2);
+  height: calc((var(--icon-size) + var(--indicator-spacing)) * 2);
+  top: calc(-1 * var(--icon-size) - var(--indicator-spacing));
+  left: calc(-1 * var(--indicator-spacing));
+}
+
+.corners::before {
+  content: "";
+  box-sizing: content-box;
+  position: absolute;
+  width: var(--border-radius);
+  height: var(--border-radius);
+  background-color: var(--nav-color);
+  z-index: 1;
+  top: calc(-1 * var(--indicator-spacing));
+  left: calc(.2 * var(--indicator-spacing));
+  transform: translateX(-100%);
+  border-top-right-radius: 100%;
+  border-width: calc(var(--indicator-spacing));
+  border-color: var(--background-color);
+  border-style: solid;
+  border-bottom: none;
+  border-left: none;
+}
+
+.corners::after {
+  content: "";
+  box-sizing: content-box;
+  position: absolute;
+  width: var(--border-radius);
+  height: var(--border-radius);
+  background-color: var(--nav-color);
+  z-index: 1;
+  top: calc(-1 * var(--indicator-spacing));
+  left: calc(var(--icon-size) * 2 + -.2 * var(--indicator-spacing));
+  border-top-left-radius: 100%;
+  border-width: calc(var(--indicator-spacing));
+  border-color: var(--background-color);
+  border-style: solid;
+  border-bottom: none;
+  border-right: none;
+}
+
+
+.card{
+  padding: 1.5em .5em .5em;
+  border-radius: 0.5em;
+  text-align: center;
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+.card-body-x {
+  min-height: 100px;
+  min-width: 250px;
+  margin-right: 5px;
+}
+
+.scroll-x{
+  overflow-x: auto;
+  overflow-y: hidden;
+}
