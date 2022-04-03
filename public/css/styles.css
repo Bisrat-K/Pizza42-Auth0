@@ -6,14 +6,18 @@ body {
 }
 
 :root {
+  --color1:#05386b;
+  --color2:#379683;
+  --color3:#5cdb95;
+  --color4:#8ee4af;
+  --color5:#edf5e1;
   --icon-size: 2rem;
   --indicator-spacing: calc(var(--icon-size) / 8);
   --border-radius: calc(var(--icon-size) / 4);
   --nav-item-padding: calc(var(--icon-size) / 2);
   --background-color: #ffffff;
-  /* --background-color-dark: rgb(251, 76, 126); */
-  --nav-color: #8ee4af;
-  --nav-indicator-color: #379683;
+  --nav-color: var(--color4);
+  --nav-indicator-color: var(--color2);
 }
 
 .body-container {
@@ -201,4 +205,42 @@ body {
 .scroll-x{
   overflow-x: auto;
   overflow-y: hidden;
+}
+
+.card-s3 {
+  border: none;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer
+}
+
+.card-s3:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background-color: var(--color4);
+  transform: scaleY(1);
+  transition: all 0.5s;
+  transform-origin: bottom
+}
+
+.card-s3:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background-color: var(--color2);
+  transform: scaleY(0);
+  transition: all 0.5s;
+  transform-origin: bottom
+}
+
+.card-s3:hover::after {
+  transform: scaleY(1)
 }
