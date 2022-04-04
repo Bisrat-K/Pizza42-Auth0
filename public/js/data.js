@@ -82,36 +82,3 @@ const COUPON = [
         'code':'STOREPICK',
     },
 ]
-
-function render_pizza(items){
-
-    container = document.getElementById('pizzacontainer')
-    container.innerHTML = ""
-    items.forEach((item,i) => {
-        container.innerHTML+=`
-          <div class="card mb-4 card-s3" style="max-width: 540px;">
-            <div class="row g-0">
-              <div class="col-md-4">
-                <img src="${item['img']}" class="img-fluid rounded-start rounded" alt="...">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">${item['name']}}<span>veg</span></h5>
-                  <p class="card-text">${item['desc']}</p>
-                  <button class="btn btn-sm btn-success">Add To Cart</button>
-                </div>
-              </div>
-            </div>
-            
-    <div class="card-footer  mt-auto">
-    <button type="button" class="btn" id="left-panel-link">Register</button>
-    <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal1" id="right-panel-link">
-      Learn More
-    </button>
-  </div>
-          </div>`
-    });
-}
-window.addEventListener('load',()=>{
-    render_pizza(PIZZA)
-})

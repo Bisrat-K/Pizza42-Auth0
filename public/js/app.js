@@ -44,13 +44,15 @@ const fetchAuthConfig = () => fetch("/auth_config.json");
 /**
  * Initializes the Auth0 client
  */
+var res;
 const configureClient = async () => {
   const response = await fetchAuthConfig();
   const config = await response.json();
 
   auth0 = await createAuth0Client({
     domain: config.domain,
-    client_id: config.clientId
+    client_id: config.clientId,
+    audience: config.audience
   });
 };
 
@@ -69,60 +71,95 @@ const requireAuth = async (fn, targetUrl) => {
   return login(targetUrl);
 };
 
-// Will run when page finishes loading
-window.onload = async () => {
-  await configureClient();
-
-  // If unable to parse the history hash, default to the root URL
-  if (!showContentFromUrl(window.location.pathname)) {
-    showContentFromUrl("/");
-    window.history.replaceState({ url: "/" }, {}, "/");
-  }
-
-  const bodyElement = document.getElementsByTagName("body")[0];
-
-  // Listen out for clicks on any hyperlink that navigates to a #/ URL
-  bodyElement.addEventListener("click", (e) => {
-    if (isRouteLink(e.target)) {
-      const url = e.target.getAttribute("href");
-
-      if (showContentFromUrl(url)) {
-        e.preventDefault();
-        window.history.pushState({ url }, {}, url);
+/**
+ * Calls the API endpoint with an authorization token
+ */
+ const callApi = async () => {
+  try {
+    const token = await auth0.getTokenSilently();
+    console.log(token);
+    const response = await fetch("/api/external", {
+      headers: {
+        Authorization: `Bearer ${token}`
       }
-    }
-  });
+    });
 
-  const isAuthenticated = await auth0.isAuthenticated();
-
-  if (isAuthenticated) {
-    console.log("> User is authenticated");
-    window.history.replaceState({}, document.title, window.location.pathname);
-    updateUI();
-    return;
+    const responseData = await response.json();
+    console.log(responseData);
+  } catch (e) {
+    console.error(e);
   }
-
-  console.log("> User not authenticated");
-
-  const query = window.location.search;
-  const shouldParseResult = query.includes("code=") && query.includes("state=");
-
-  if (shouldParseResult) {
-    console.log("> Parsing redirect");
-    try {
-      const result = await auth0.handleRedirectCallback();
-
-      if (result.appState && result.appState.targetUrl) {
-        showContentFromUrl(result.appState.targetUrl);
-      }
-
-      console.log("Logged in!");
-    } catch (err) {
-      console.log("Error parsing redirect:", err);
-    }
-
-    window.history.replaceState({}, document.title, "/");
-  }
-
-  updateUI();
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // Will run when page finishes loading
+// window.addEventListener('load', async () => {
+//   await configureClient();
+//   updateSection();
+// }
+//   // If unable to parse the history hash, default to the root URL
+//   // if (!showContentFromUrl(window.location.pathname)) {
+//   //   // showContentFromUrl("/");
+//   //   window.history.replaceState({ url: "/" }, {}, "/");
+//   // }
+
+//   const bodyElement = document.getElementsByTagName("body")[0];
+
+//   // Listen out for clicks on any hyperlink that navigates to a #/ URL
+//   bodyElement.addEventListener("click", (e) => {
+//     if (isRouteLink(e.target)) {
+//       const url = e.target.getAttribute("href");
+
+//       if (showContentFromUrl(url)) {
+//         e.preventDefault();
+//         window.history.pushState({ url }, {}, url);
+//       }
+//     }
+//   });
+
+//   const isAuthenticated = await auth0.isAuthenticated();
+
+//   if (isAuthenticated) {
+//     console.log("> User is authenticated");
+//     window.history.replaceState({}, document.title, window.location.pathname);
+//     updateUI();
+//     return;
+//   }
+
+//   console.log("> User not authenticated");
+
+//   const query = window.location.search;
+//   const shouldParseResult = query.includes("code=") && query.includes("state=");
+
+//   if (shouldParseResult) {
+//     console.log("> Parsing redirect");
+//     try {
+//       const result = await auth0.handleRedirectCallback();
+
+//       // if (result.appState && result.appState.targetUrl) {
+//       //   showContentFromUrl(result.appState.targetUrl);
+//       // }
+
+//       console.log("Logged in!");
+//     } catch (err) {
+//       console.log("Error parsing redirect:", err);
+//     }
+
+//     window.history.replaceState({}, document.title, "/");
+//   }
+
+//   updateUI();
+// })

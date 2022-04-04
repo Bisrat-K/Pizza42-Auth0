@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/Bisrat-K/Pizza42-Auth0.git"
   },
-  "author": "",
+  "author": "Rajarshi07",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Bisrat-K/Pizza42-Auth0/issues"
@@ -20,7 +20,9 @@
   "homepage": "https://github.com/Bisrat-K/Pizza42-Auth0#readme",
   "dependencies": {
     "express": "^4.17.3",
+    "express-jwt": "^6.1.1",
     "helmet": "^5.0.2",
+    "jwks-rsa": "^2.0.5",
     "morgan": "^1.10.0"
   }
 }

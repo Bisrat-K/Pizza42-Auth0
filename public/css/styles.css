@@ -4,7 +4,6 @@ body {
   overflow-y: hidden;
   overflow-x: hidden;
 }
-
 :root {
   --color1:#05386b;
   --color2:#379683;

@@ -1,66 +1,37 @@
-// URL mapping, from hash to a function that responds to that URL action
-const router = {
-  "/": () => showContent("content-home"),
-  "/profile": () =>
-    requireAuth(() => showContent("content-profile"), "/profile"),
-  "/login": () => login()
-};
+const indicator = QS("[data-indicator]")
+const secid = [
+  getId('s0'),
+  getId('s1'),
+  getId('s2'),
+  getId('s3'),
+  getId('s4')
+]
+const allAnchors = QSA(".navbar-list a")
+const navbar = getId('bottomnav')
 
-//Declare helper functions
-
-/**
- * Iterates over the elements matching 'selector' and passes them
- * to 'fn'
- * @param {*} selector The CSS selector to find
- * @param {*} fn The function to execute for every element
- */
-const eachElement = (selector, fn) => {
-  for (let e of document.querySelectorAll(selector)) {
-    fn(e);
+const afterLogin = async () => {
+  const query = window.location.search;
+  const shouldParseResult = query.includes("code=") && query.includes("state=");
+  if (shouldParseResult) {
+    console.log("> Parsing redirect");
+    try {
+      const result = await auth0.handleRedirectCallback();
+      if (result.appState && result.appState.targetUrl) {
+        showContentFromUrl(result.appState.targetUrl);
+      }
+      console.log("Logged in!");
+    } catch (err) {
+      console.log("Error parsing redirect:", err);
+    }
+    window.history.replaceState({}, document.title, "/");
   }
-};
+}
 
-/**
- * Tries to display a content panel that is referenced
- * by the specified route URL. These are matched using the
- * router, defined above.
- * @param {*} url The route URL
- */
-const showContentFromUrl = (url) => {
-  if (router[url]) {
-    router[url]();
-    return true;
-  }
-
-  return false;
-};
-
-/**
- * Returns true if `element` is a hyperlink that can be considered a link to another SPA route
- * @param {*} element The element to check
- */
-const isRouteLink = (element) =>
-  element.tagName === "A" && element.classList.contains("route-link");
-
-/**
- * Displays a content panel specified by the given element id.
- * All the panels that participate in this flow should have the 'page' class applied,
- * so that it can be correctly hidden before the requested content is shown.
- * @param {*} id The id of the content to show
- */
-const showContent = (id) => {
-  eachElement(".page", (p) => p.classList.add("hidden"));
-  document.getElementById(id).classList.remove("hidden");
-};
-
-/**
- * Updates the user interface
- */
-const updateUI = async () => {
+const updateProfile = async () => {
   try {
     const isAuthenticated = await auth0.isAuthenticated();
-
     if (isAuthenticated) {
+      console.log("> User is authenticated");
       const user = await auth0.getUser();
 
       document.getElementById("profile-data").innerText = JSON.stringify(
@@ -68,9 +39,6 @@ const updateUI = async () => {
         null,
         2
       );
-
-      document.querySelectorAll("pre code").forEach(hljs.highlightBlock);
-
       eachElement(".profile-image", (e) => (e.src = user.picture));
       eachElement(".user-name", (e) => (e.innerText = user.name));
       eachElement(".user-email", (e) => (e.innerText = user.email));
@@ -84,12 +52,92 @@ const updateUI = async () => {
     console.log("Error updating UI!", err);
     return;
   }
-
   console.log("UI updated");
 };
 
-window.onpopstate = (e) => {
-  if (e.state && e.state.url && router[e.state.url]) {
-    showContentFromUrl(e.state.url);
+async function updateSection(anchor = null,index=null) {
+  if(index==null){
+    if (anchor) {
+      index = allAnchors.indexOf(anchor)
+    }
+    else {
+      index = lGet('activeSection')
+      if (!index) {
+        index = 0;
+      }
+    }
   }
-};
+  console.log('Update Section', index)
+  lSet('activeSection', index)
+  index = parseInt(index)
+  indicator.style.setProperty("--position", index)
+  secid.forEach((item, i) => {
+    if (i == index) {
+      item.removeAttribute('hidden')
+    } else {
+      item.setAttribute('hidden', true)
+    }
+  })
+  allAnchors.forEach((item, i) => {
+    if (i == index) {
+      item.classList.add('active')
+    } else {
+      item.classList.remove('active')
+    }
+  })
+  try{
+    updateProfile();
+  } catch(err){
+    console.log(err)
+  }
+}
+
+document.addEventListener("click", e => {
+  let anchor
+  if (e.target.matches(".navbar-list a")) {
+    anchor = e.target
+  } else {
+    anchor = e.target.closest(".navbar-list a")
+  }
+  if (anchor != null) {
+    updateSection(anchor)
+  }
+})
+
+window.addEventListener('load', async () => {
+  render_pizza(PIZZA);
+  updateSection();
+  await configureClient();
+  await afterLogin();
+  updateProfile();
+})
+
+
+
+function render_pizza(items) {
+  container = document.getElementById('pizzacontainer')
+  container.innerHTML = ""
+  items.forEach((item, i) => {
+    container.innerHTML += `
+        <div class="card mb-4 card-s3" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="${item['img']}" class="img-fluid rounded-start rounded" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">${item['name']}</h5>
+                <p class="card-text">${item['desc']}</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="buttons mt-auto">
+            <a class="btn btn-sm" id="left-panel-link">Add to Cart</a>
+            <a class="btn btn-sm" id="right-panel-link">Order Now</a>
+            ${item['veg']?'<span style="color:green;">▣</span>':'<span style="color:red;">▣</span>'}
+          </div>
+        </div>`
+  });
+}
+
