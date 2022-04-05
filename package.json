@@ -19,10 +19,17 @@
   },
   "homepage": "https://github.com/Bisrat-K/Pizza42-Auth0#readme",
   "dependencies": {
+    "auth0": "^2.40.0",
+    "axios": "^0.26.1",
+    "cors": "^2.8.5",
     "express": "^4.17.3",
     "express-jwt": "^6.1.1",
     "helmet": "^5.0.2",
     "jwks-rsa": "^2.0.5",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "qs": "^6.10.3"
+  },
+  "engines": {
+    "node": "16.x"
   }
 }

@@ -2,139 +2,328 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pizza 42 - Auth0 SPA</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/s3.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza 42 - Auth0 SPA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/s1.css">
+    <link rel="stylesheet" href="/css/s3.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light sticky-top"
-    style="background: linear-gradient(to bottom,#edf5e1,#ffffffff);">
-    <div class="mx-auto order-0">
-      <a class="navbar-brand mx-auto" href="#" style="font-family: 'Shrikhand', cursive;">
-        <img src="images/logo.svg" alt="" width="30" height="30" class="d-inline-block align-text-top">
-        Pizza 42
-      </a>
-    </div>
-  </nav>
-
-
-
-  <div class="container container-md  body-container">
-    <div id="s0">
-      <div class="container-fluid py-2">
-        <h2 class="font-weight-light">Welcome <small class="font-weight-light user-name">User</small>!</h2>
-        <div class="d-flex flex-row flex-nowrap scroll-x" id="offercontainer">
-          <div class="card card-body card-body-x" style="background-color: var(--color1);">Offer 1</div>
-          <div class="card card-body card-body-x" style="background-color: var(--color2);">Offer 2</div>
-          <div class="card card-body card-body-x" style="background-color: var(--color3);">Offer 3</div>
-          <div class="card card-body card-body-x" style="background-color: var(--color4);">Offer 4</div>
-          <div class="card card-body card-body-x" style="background-color: var(--color5);">Offer 5</div>
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top"
+        style="background: linear-gradient(to bottom,#edf5e1,#ffffffff);">
+        <div class="mx-auto order-0">
+            <a class="navbar-brand mx-auto" href="#" style="font-family: 'Shrikhand', cursive;">
+                <img src="/images/logo.svg" alt="" width="30" height="30" class="d-inline-block align-text-top">
+                Pizza 42
+            </a>
         </div>
-      </div>
-      <div class="card-deck row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3" id="pizzacontainer">
-      </div>
-    </div>
-    <div id="s1">
-      <h1>S1</h1>
-    </div>
-    <div id="s2">
-      <div class="container mt-5  auth-invisible">
-        <div class="row d-flex justify-content-center">
-          <div class="col-md-7">
-            <div class="card-s3 p-3 py-4">
-              <div class="text-center"> <img src="/images/logo.svg" width="100" class="rounded-circle"> </div>
-              <div class="text-center mt-3">
-                 <!-- <span class="bg-secondary p-1 px-4 rounded text-white">Pro</span> -->
-                <h5 class="mt-2 mb-0">Log In</h5> 
-                <!-- <span>User Not Logged In</span> -->
-                <div class="px-4 mt-1">
-                  <p class="fonts">Login or Sign-Up to Pizza-42 to place an order.</p>
+    </nav>
+    <div class="container container-md  body-container">
+        <div id="s0">
+            <div class="container-fluid py-2">
+                <h2 class="font-weight-light">Welcome <small class="font-weight-light user-name">User</small>!</h2>
+                <div class="d-flex flex-row flex-nowrap scroll-x" id="offercontainer">
+                    <div class="card card-body card-body-x" style="background-color: var(--color1);">Offer 1</div>
+                    <div class="card card-body card-body-x" style="background-color: var(--color2);">Offer 2</div>
+                    <div class="card card-body card-body-x" style="background-color: var(--color3);">Offer 3</div>
+                    <div class="card card-body card-body-x" style="background-color: var(--color4);">Offer 4</div>
+                    <div class="card card-body card-body-x" style="background-color: var(--color5);">Offer 5</div>
                 </div>
-                <div class="buttons"> 
-                  <a class="btn btn-outline-primary px-4" onclick="login()">Login | Sign-Up</a> 
-                  <!-- <a class="btn btn-primary px-4 ms-3" onclick="login()">Sign Up</a>  -->
-                </div>
-              </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="container mt-5  auth-visible">
-        <div class="row d-flex justify-content-center">
-          <div class="col-md-7">
-            <div class="card-s3 p-3 py-4">
-              <div class="text-center"> <img src="" width="100" class="rounded-circle profile-image"> </div>
-              <div class="text-center mt-3">
-                 <span class="bg-secondary p-1 px-4 rounded text-white">Logged In</span>
-                <h5 class="mt-2 mb-0 user-name"></h5> 
-                <span class="user-email"></span>
-                <!-- <div class="row"> -->
-                <code id="profile-data" class="json" hidden></code>
-                <!-- </div> -->
-                <div class="px-4 mt-1">
-                  <p class="fonts" id="user-text">Order a delicious pizza.</p>
-                </div>
-                <div class="buttons"> 
-                  <a class="btn btn-outline-primary px-4" onclick="updateSection(null,0)">Order a Pizza</a> 
-                  <button class="btn btn-danger px-4 ms-3 btn-sm" onclick="logout()">Log Out</button> 
-                </div>
-              </div>
+            <div class="card-deck row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3" id="pizzacontainer">
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-    <div id="s3">
-      <h1>S3</h1>
-    </div>
-    <div id="s4">
-      <div class="container mt-5">
-        <div class="row d-flex justify-content-center">
-          <div class="col-md-7">
-            <div class="card-s3 p-3 py-4">
-              <div class="text-center"> <img src="/images/logo.svg" width="100" class="rounded-circle"> </div>
-              <div class="text-center mt-3"> <span class="bg-secondary p-1 px-4 rounded text-white">Pizza 42</span>
-                <h5></h5>
-                <span>Developed By: </span>
-                <h5 class="mt-2 mb-0">Bisrat-K</h5>
-                <div class="px-4 mt-1">
-                  <p class="fonts">Application to demonstrate the use of Auth-0 credential management APIs to create an
-                    SPA for Pizza42. </p>
-                </div>
-                <div class="buttons">
-                  <a class="btn btn-outline-primary px-4" href='https://github.com/Bisrat-K/'>Github</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br><br><br><br><br>
-      <p> </p>
-    </div>
-    <div style="height:200px; width:100%; clear:both;"></div>
-  </div>
-  <div class="bottom-nav-container container-md" id="bottomnav">
-    <nav class="navbar-container">
-      <ul class="navbar-list">
-        <div style="--position: 0;" data-indicator class="indicator">
-          <div class="corners"></div>
-        </div>
-        <li><a href="#" class="active">
-            <div class="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="360.000000pt"
-                height="360.000000pt" viewBox="0 0 360.000000 360.000000" preserveAspectRatio="xMidYMid meet">
+        <div id="s1">
+            <div class="container mt-5 p-3 rounded cart">
+                <div class="row no-gutters">
+                    <div class="col-md-8">
+                        <div class="product-details mr-2">
+                            <div class="d-flex flex-row align-items-center" onclick="updateSection(null,0)"><i
+                                    class="fa fa-long-arrow-left"></i><span class="ml-2">Continue Shopping</span></div>
+                            <hr>
+                            <h6 class="mb-0">Shopping cart</h6>
+                            <div class="d-flex justify-content-between"><span>You have <span
+                                        class="cart-item-count">0</span> items in your cart</span>
+                                <!-- <div class="d-flex flex-row align-items-center"><span class="text-black-50">Sort
+                                        by:</span>
+                                    <div class="price ml-2"><span class="mr-1">price</span><i
+                                            class="fa fa-angle-down"></i></div>
+                                </div> -->
+                            </div>
+                            <div id="cartcontainer">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="payment-info">
+                            <form id='cart-form' method="post">
+                                <div class="d-flex justify-content-between align-items-center"><span>Address</span>
+                                    <img class="rounded profile-image" src="/images/logo.svg" width="30">
+                                </div>
+                                <div>
+                                    <label class="credit-card-label">Address Line 1<span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" required id="address-1" class="form-control credit-inputs"
+                                        placeholder="Address Line 1">
+                                </div>
+                                <div><label class="credit-card-label">Address Line 2</label><input type="text"
+                                        class="form-control credit-inputs" id="address-2" placeholder="Address Line 2">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="credit-card-label">ZIP<span class="text-danger">*</span></label>
+                                        <input required type="text" class="form-control credit-inputs" id="address-zip"
+                                            placeholder="ZIP Code">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="credit-card-label">State<span class="text-danger">*</span></label>
+                                        <input required type="text" class="form-control credit-inputs"
+                                            id="address-state" placeholder="State">
+                                    </div>
+                                </div>
+                                <hr class="line">
+                                <div class="d-flex justify-content-between information">
+                                    <span>Subtotal</span>
+                                    <span class="cart-subtotal">$0.00</span>
+                                </div>
+                                <div class="d-flex justify-content-between information">
+                                    <span>Delivery</span>
+                                    <span class="cart-delivery">$0.00</span>
+                                </div>
+                                <div class="d-flex justify-content-between information">
+                                    <span>Total(Incl. taxes)</span>
+                                    <span class="cart-total">$0.00</span>
+                                </div>
 
-                <g transform="translate(0.000000,360.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
-                  <path d="M1827 3350 c-131 -33 -230 -143 -273 -301 -8 -30 -19 -96 -24 -146
+                                <div class="d-flex justify-content-between information">
+                                    <span id="cart-errors" class="text-danger"></span>
+                                </div>
+                                <div class="auth-visible">
+                                    <button type="submit"
+                                        class="btn btn-block d-flex justify-content-between mt-3 auth-visible"
+                                        style="background-color: var(--color4);" type="button">
+                                        <span>Place Order <i class="fa fa-long-arrow-right ml-1"></i>
+                                        </span>
+                                    </button>
+                                </div>
+
+                            </form>
+                            <div class=" auth-invisible">
+                                <button class="btn btn-block d-flex justify-content-between mt-3" onclick="login()"
+                                    style="background-color: var(--color4);" type="button">
+                                    <span>Login to Place Order <i class="fa fa-long-arrow-right ml-1"></i>
+                                    </span>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="s2">
+            <div class="container mt-5  auth-invisible">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-7">
+                        <div class="card-s3 p-3 py-4">
+                            <div class="text-center"> <img src="/images/logo.svg" width="100" class="rounded-circle">
+                            </div>
+                            <div class="text-center mt-3">
+                                <!-- <span class="bg-secondary p-1 px-4 rounded text-white">Pro</span> -->
+                                <h5 class="mt-2 mb-0">Log In</h5>
+                                <!-- <span>User Not Logged In</span> -->
+                                <div class="px-4 mt-1">
+                                    <p class="fonts">Login or Sign-Up to Pizza-42 to place an order.</p>
+                                </div>
+                                <div class="buttons">
+                                    <a class="btn btn-outline-primary px-4" onclick="login()">Login | Sign-Up</a>
+                                    <!-- <a class="btn btn-primary px-4 ms-3" onclick="login()">Sign Up</a>  -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container mt-5  auth-visible">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-7">
+                        <div class="card-s3 p-3 py-4">
+                            <div class="text-center"> <img src="" width="100" class="rounded-circle profile-image">
+                            </div>
+                            <div class="text-center mt-3">
+                                <span class="bg-secondary p-1 px-4 rounded text-white">Logged In</span>
+                                <h5 class="mt-2 mb-0 user-name"></h5>
+                                <span class="user-email"></span>
+                                <code id="profile-data" class="json" hidden></code>
+                                <div class="px-4 mt-1">
+                                    <p class="fonts" id="user-text">Order a delicious pizza.</p>
+                                </div>
+                                <div class="buttons">
+                                    <a class="btn btn-outline-primary px-4" id="user-order-pizza"
+                                        onclick="updateSection(null,0)">Order a Pizza</a>
+                                    <a class="btn btn-outline-primary px-4" id="user-resend-verification"
+                                        onclick="resendVerification()" hidden>Resend Verification Email</a>
+                                    <button class="btn btn-danger px-4 ms-3 btn-sm" onclick="logout()">Log Out</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="s3">
+            <!-- <div class="container-fluid py-2"> -->
+            <h1 class="auth-invisible">Login to View Orders</h1>
+            <!-- <div class="auth-visible"> -->
+            <h1 class="auth-visible hidden">Orders:</h1>
+            <ul class="list-group list-group-flush auth-visible" id="list-orders">
+                <li class="list-group-item" onclick="showOrderDetails(item)">Cras justo odio</li>
+            </ul>
+            <div class="modal fade" id="order-details-modal" tabindex="-1" aria-labelledby="order-details-modal"
+                aria-hidden="true">
+                <div class="modal-dialog ">
+                    <div class="modal-content col-10">
+                        <div class="row d-flex justify-content-center align-items-center h-100">
+                            <div class="card border-top border-bottom border-start-0 border-end-0 border-3"
+                                style="border-color: var(--color2) !important;">
+                                <div class="card-body p-5">
+
+                                    <p class="lead fw-bold mb-5" style="color: var(--color2);">Purchase Reciept
+
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </p>
+
+                                    <div class="row">
+                                        <div class="col mb-3">
+                                            <p class="small text-muted mb-1">Date</p>
+                                            <p>10 April 2021</p>
+                                        </div>
+                                        <div class="col mb-3">
+                                            <p class="small text-muted mb-1">Order No.</p>
+                                            <p>012j1gvs356c</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="mx-n5 px-5 py-4" style="background-color: #f2f2f2;">
+                                        <div class="row">
+                                            <div class="col-md-8 col-lg-9">
+                                                <p>BEATS Solo 3 Wireless Headphones</p>
+                                            </div>
+                                            <div class="col-md-4 col-lg-3">
+                                                <p>£299.99</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-8 col-lg-9">
+                                                <p class="mb-0">Shipping</p>
+                                            </div>
+                                            <div class="col-md-4 col-lg-3">
+                                                <p class="mb-0">£33.00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row my-4">
+                                        <div class="col-md-4 offset-md-8 col-lg-3 offset-lg-9">
+                                            <p class="lead fw-bold mb-0" style="color: var(--color2);">£262.99</p>
+                                        </div>
+                                    </div>
+
+                                    <p class="lead fw-bold mb-4 pb-2" style="color: var(--color2);">Tracking Order</p>
+
+                                    <div class="row">
+                                        <div class="col-lg-12">
+
+                                            <div class="horizontal-timeline">
+
+                                                <ul class="list-inline items d-flex justify-content-between">
+                                                    <li class="list-inline-item items-list">
+                                                        <p class="py-1 px-2 rounded text-white"
+                                                            style="background-color: var(--color2);">Ordered</p
+                                                            class="py-1 px-2 rounded text-white"
+                                                            style="background-color: var(--color2);">
+                                                    </li>
+                                                    <li class="list-inline-item items-list">
+                                                        <p class="py-1 px-2 rounded text-white"
+                                                            style="background-color: var(--color2);">Shipped</p
+                                                            class="py-1 px-2 rounded text-white"
+                                                            style="background-color: var(--color2);">
+                                                    </li>
+                                                    <li class="list-inline-item items-list">
+                                                        <p class="py-1 px-2 rounded text-white"
+                                                            style="background-color: var(--color2);">On the way</p>
+                                                    </li>
+                                                    <li class="list-inline-item items-list text-end"
+                                                        style="margin-right: 8px;">
+                                                        <p style="margin-right: -8px;">Delivered</p>
+                                                    </li>
+                                                </ul>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <p class="mt-4 pt-2 mb-0">Want any help? <a onclick="updateSection(null,4)"
+                                            style="color: var(--color2);">Please contact us</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="s4">
+            <div class="container mt-5">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-7">
+                        <div class="card-s3 p-3 py-4">
+                            <div class="text-center"> <img src="/images/logo.svg" width="100" class="rounded-circle">
+                            </div>
+                            <div class="text-center mt-3"> <span class="bg-secondary p-1 px-4 rounded text-white">Pizza
+                                    42</span>
+                                <h5></h5>
+                                <span>Developed By: </span>
+                                <h5 class="mt-2 mb-0">Bisrat-K</h5>
+                                <div class="px-4 mt-1">
+                                    <p class="fonts">Application to demonstrate the use of Auth-0 credential management
+                                        APIs to create an
+                                        SPA for Pizza42. </p>
+                                </div>
+                                <div class="buttons">
+                                    <a class="btn btn-outline-primary px-4"
+                                        href='https://github.com/Bisrat-K/'>Github</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="height:200px; width:100%; clear:both;"></div>
+    </div>
+    <div class="bottom-nav-container container-md" id="bottomnav">
+        <nav class="navbar-container">
+            <ul class="navbar-list">
+                <div style="--position: 0;" data-indicator class="indicator">
+                    <div class="corners"></div>
+                </div>
+                <li><a href="#" class="active">
+                        <div class="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="360.000000pt"
+                                height="360.000000pt" viewBox="0 0 360.000000 360.000000"
+                                preserveAspectRatio="xMidYMid meet">
+
+                                <g transform="translate(0.000000,360.000000) scale(0.100000,-0.100000)" fill="#000000"
+                                    stroke="none">
+                                    <path d="M1827 3350 c-131 -33 -230 -143 -273 -301 -8 -30 -19 -96 -24 -146
             l-10 -93 -87 -91 c-81 -84 -98 -96 -203 -148 -139 -68 -170 -101 -195 -214
             l-16 -72 -68 -33 c-116 -56 -194 -140 -236 -257 -10 -27 -27 -59 -37 -71 -10
             -11 -77 -51 -149 -90 -187 -98 -211 -122 -249 -242 -38 -117 -44 -128 -109
@@ -173,33 +362,35 @@
             24 c33 22 40 24 79 14 24 -6 58 -11 76 -11 35 0 131 40 143 60 13 20 30 4 36
             -36z m-1468 -195 c-5 -5 -35 -11 -68 -15 l-60 -7 19 22 c28 31 76 42 99 23 9
             -9 14 -19 10 -23z" />
-                  <path d="M1780 2395 c-215 -38 -319 -80 -360 -147 -45 -75 -19 -111 114 -155
+                                    <path d="M1780 2395 c-215 -38 -319 -80 -360 -147 -45 -75 -19 -111 114 -155
             72 -25 95 -27 216 -27 l135 0 109 57 c132 69 136 72 136 106 0 34 -76 122
             -134 156 -49 29 -95 31 -216 10z m75 -75 c60 -16 115 -42 109 -51 -3 -5 -38
             -9 -77 -10 -40 0 -97 -4 -127 -9 -30 -5 -86 -12 -125 -15 -66 -6 -69 -6 -50
             10 38 32 159 85 195 85 19 0 53 -5 75 -10z" />
-                  <path d="M2345 2094 c-68 -12 -173 -41 -226 -62 -32 -13 -96 -67 -110 -94 -16
+                                    <path d="M2345 2094 c-68 -12 -173 -41 -226 -62 -32 -13 -96 -67 -110 -94 -16
             -30 6 -71 49 -95 20 -11 69 -39 107 -62 39 -23 96 -47 128 -53 70 -15 100 -2
             149 62 20 27 54 55 85 70 98 49 103 67 44 156 -63 95 -90 104 -226 78z m96
             -89 c17 -9 27 -20 23 -24 -5 -4 -44 -20 -87 -35 -73 -25 -82 -26 -133 -15 -30
             7 -54 15 -54 18 0 7 49 40 95 65 36 20 108 15 156 -9z" />
-                  <path d="M1120 1771 c-80 -21 -116 -40 -157 -83 -63 -66 -63 -113 1 -162 41
+                                    <path d="M1120 1771 c-80 -21 -116 -40 -157 -83 -63 -66 -63 -113 1 -162 41
             -31 113 -65 138 -66 9 0 44 23 78 51 33 28 96 70 138 93 58 31 78 47 80 65 5
             36 -5 65 -34 94 -24 25 -33 27 -103 26 -42 0 -105 -8 -141 -18z m115 -51 c6
             -9 -83 -60 -106 -60 -19 0 10 29 50 50 42 22 48 23 56 10z" />
-                </g>
-              </svg>
+                                </g>
+                            </svg>
 
-            </div>
-            <div class="text">Home</div>
-          </a></li>
-        <li><a href="#">
-            <div class="icon">
-              <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="980.000000pt" height="864.000000pt"
-                viewBox="0 0 980.000000 864.000000" preserveAspectRatio="xMidYMid meet">
+                        </div>
+                        <div class="text">Home</div>
+                    </a></li>
+                <li><a href="#">
+                        <div class="icon">
+                            <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="980.000000pt"
+                                height="864.000000pt" viewBox="0 0 980.000000 864.000000"
+                                preserveAspectRatio="xMidYMid meet">
 
-                <g transform="translate(0.000000,864.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
-                  <path d="M8130 8624 c-154 -19 -352 -80 -501 -154 -203 -103 -432 -302 -556
+                                <g transform="translate(0.000000,864.000000) scale(0.100000,-0.100000)" fill="#000000"
+                                    stroke="none">
+                                    <path d="M8130 8624 c-154 -19 -352 -80 -501 -154 -203 -103 -432 -302 -556
 -485 -243 -360 -325 -784 -231 -1190 58 -250 194 -501 377 -697 205 -220 522
 -395 805 -445 112 -19 434 -21 551 -3 185 28 429 132 604 258 115 82 266 231
 344 340 112 155 217 384 253 553 16 69 19 129 19 339 0 233 -2 262 -23 341
@@ -208,11 +399,11 @@
 214 -456 203 -730 -10 -250 -90 -472 -244 -674 -247 -323 -670 -509 -1059
 -467 -302 32 -540 145 -750 354 -223 222 -325 455 -349 796 -34 480 275 965
 741 1163 95 40 183 65 267 76 93 13 305 12 393 0z" />
-                  <path d="M8130 7600 l0 -300 -305 0 -305 0 0 -163 0 -164 203 -6 c111 -4 245
+                                    <path d="M8130 7600 l0 -300 -305 0 -305 0 0 -163 0 -164 203 -6 c111 -4 245
 -7 298 -7 l96 0 6 -172 c4 -95 7 -230 7 -300 l0 -128 180 0 180 0 0 294 0 294
 38 8 c20 5 141 9 267 9 127 1 247 2 268 3 l37 2 0 165 0 165 -305 0 -305 0 0
 300 0 300 -180 0 -180 0 0 -300z" />
-                  <path d="M7 8169 c-4 -13 -7 -78 -7 -145 l0 -121 123 -7 c549 -30 833 -116
+                                    <path d="M7 8169 c-4 -13 -7 -78 -7 -145 l0 -121 123 -7 c549 -30 833 -116
 1032 -311 122 -120 209 -271 280 -488 40 -122 328 -1275 570 -2282 327 -1360
 440 -1795 520 -2010 159 -424 359 -602 830 -738 l120 -35 2130 -6 2130 -6 -3
 142 c-2 79 -5 144 -6 145 0 0 -870 6 -1932 12 -1062 7 -2028 16 -2146 21 -189
@@ -234,7 +425,7 @@ m2412 15 c-7 -24 -22 -292 -46 -828 -19 -429 -26 -531 -36 -587 l-6 -28 -811
 l787 2 0 -37z m2060 21 c16 -16 -300 -1116 -381 -1325 -39 -101 -116 -179
 -199 -200 -72 -18 -1222 -21 -1240 -3 -9 9 -6 134 9 485 27 598 51 1032 57
 1039 14 14 249 18 961 16 547 -1 785 -4 793 -12z" />
-                  <path d="M2577 1770 c-180 -31 -411 -185 -533 -356 -60 -84 -132 -237 -145
+                                    <path d="M2577 1770 c-180 -31 -411 -185 -533 -356 -60 -84 -132 -237 -145
 -309 -7 -36 -9 -136 -7 -250 4 -188 4 -191 36 -264 103 -237 237 -385 450
 -494 136 -70 187 -81 387 -82 191 0 266 15 393 79 475 240 644 827 366 1273
 -57 92 -164 203 -252 262 -97 65 -239 129 -312 141 -75 11 -313 11 -383 0z
@@ -242,7 +433,7 @@ m352 -301 c80 -18 153 -62 241 -145 150 -143 198 -260 187 -458 -6 -119 -30
 -196 -89 -287 -75 -116 -202 -214 -323 -248 -72 -21 -199 -30 -276 -20 -120
 15 -204 61 -314 172 -136 138 -175 229 -175 407 1 187 39 286 160 411 141 144
 266 194 460 183 47 -3 105 -10 129 -15z" />
-                  <path d="M7165 1771 c-149 -25 -376 -169 -500 -318 -71 -85 -138 -221 -167
+                                    <path d="M7165 1771 c-149 -25 -376 -169 -500 -318 -71 -85 -138 -221 -167
 -338 -17 -70 -22 -118 -22 -220 0 -161 25 -268 91 -405 41 -86 57 -106 167
 -215 133 -132 194 -173 318 -216 120 -41 212 -53 363 -46 155 8 194 16 301 66
 249 117 419 305 493 543 47 155 51 344 11 504 -42 166 -159 353 -283 454 -69
@@ -251,34 +442,34 @@ m352 -301 c80 -18 153 -62 241 -145 150 -143 198 -260 187 -458 -6 -119 -30
 -256 -243 -70 -36 -179 -63 -262 -63 -77 0 -198 32 -275 72 -88 46 -212 173
 -262 268 l-40 75 -3 158 c-3 128 -1 168 13 210 52 160 234 341 383 384 66 18
 318 11 393 -12z" />
-                </g>
-              </svg>
-            </div>
-            <div class="text">Cart</div>
-          </a></li>
-        <li><a href="#">
-            <div class="icon">
-              <svg enable-background="new 0 0 48 48" height="48px" id="Layer_1" version="1.1" viewBox="0 0 48 48"
-                width="48px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink">
-                <path clip-rule="evenodd"
-                  d="M24,45C12.402,45,3,35.598,3,24S12.402,3,24,3s21,9.402,21,21S35.598,45,24,45z   M35.633,39c-0.157-0.231-0.355-0.518-0.514-0.742c-0.277-0.394-0.554-0.788-0.802-1.178C34.305,37.062,32.935,35.224,28,35  c-1.717,0-2.965-1.288-2.968-3.066L25,31c0-0.135-0.016,0.148,0,0v-1l1-1c0.731-0.339,1.66-0.909,2.395-1.464l0.135-0.093  C29.111,27.074,29.923,26.297,30,26l0.036-0.381C30.409,23.696,31,20.198,31,19c0-4.71-2.29-7-7-7c-4.775,0-7,2.224-7,7  c0,1.23,0.591,4.711,0.963,6.616l0.035,0.352c0.063,0.313,0.799,1.054,1.449,1.462l0.098,0.062C20.333,28.043,21.275,28.657,22,29  l1,1v1c0.014,0.138,0-0.146,0,0l-0.033,0.934c0,1.775-1.246,3.064-2.883,3.064c-0.001,0-0.002,0-0.003,0  c-4.956,0.201-6.393,2.077-6.395,2.077c-0.252,0.396-0.528,0.789-0.807,1.184c-0.157,0.224-0.355,0.51-0.513,0.741  c3.217,2.498,7.245,4,11.633,4S32.416,41.498,35.633,39z M24,5C13.507,5,5,13.507,5,24c0,5.386,2.25,10.237,5.85,13.694  C11.232,37.129,11.64,36.565,12,36c0,0,1.67-2.743,8-3c0.645,0,0.967-0.422,0.967-1.066h0.001C20.967,31.413,20.967,31,20.967,31  c0-0.13-0.021-0.247-0.027-0.373c-0.724-0.342-1.564-0.814-2.539-1.494c0,0-2.4-1.476-2.4-3.133c0,0-1-5.116-1-7  c0-4.644,1.986-9,9-9c6.92,0,9,4.356,9,9c0,1.838-1,7-1,7c0,1.611-2.4,3.133-2.4,3.133c-0.955,0.721-1.801,1.202-2.543,1.546  c-0.005,0.109-0.023,0.209-0.023,0.321c0,0-0.001,0.413-0.001,0.934h0.001C27.033,32.578,27.355,33,28,33c6.424,0.288,8,3,8,3  c0.36,0.565,0.767,1.129,1.149,1.694C40.749,34.237,43,29.386,43,24C43,13.507,34.493,5,24,5z"
-                  fill-rule="evenodd" />
-              </svg>
-            </div>
-            <div class="text">Account</div>
-          </a></li>
-        <li><a href="#">
-            <div class="icon">
-              <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55.996 55.996"
-                style="enable-background:new 0 0 55.996 55.996;" xml:space="preserve">
-                <g>
-                  <path d="M42.998,31.996c-6.617,0-12,5.383-12,12s5.383,12,12,12s12-5.383,12-12S49.615,31.996,42.998,31.996z M42.998,53.996
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="text">Cart</div>
+                    </a></li>
+                <li><a href="#">
+                        <div class="icon">
+                            <svg enable-background="new 0 0 48 48" height="48px" id="Layer_1" version="1.1"
+                                viewBox="0 0 48 48" width="48px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <path clip-rule="evenodd"
+                                    d="M24,45C12.402,45,3,35.598,3,24S12.402,3,24,3s21,9.402,21,21S35.598,45,24,45z   M35.633,39c-0.157-0.231-0.355-0.518-0.514-0.742c-0.277-0.394-0.554-0.788-0.802-1.178C34.305,37.062,32.935,35.224,28,35  c-1.717,0-2.965-1.288-2.968-3.066L25,31c0-0.135-0.016,0.148,0,0v-1l1-1c0.731-0.339,1.66-0.909,2.395-1.464l0.135-0.093  C29.111,27.074,29.923,26.297,30,26l0.036-0.381C30.409,23.696,31,20.198,31,19c0-4.71-2.29-7-7-7c-4.775,0-7,2.224-7,7  c0,1.23,0.591,4.711,0.963,6.616l0.035,0.352c0.063,0.313,0.799,1.054,1.449,1.462l0.098,0.062C20.333,28.043,21.275,28.657,22,29  l1,1v1c0.014,0.138,0-0.146,0,0l-0.033,0.934c0,1.775-1.246,3.064-2.883,3.064c-0.001,0-0.002,0-0.003,0  c-4.956,0.201-6.393,2.077-6.395,2.077c-0.252,0.396-0.528,0.789-0.807,1.184c-0.157,0.224-0.355,0.51-0.513,0.741  c3.217,2.498,7.245,4,11.633,4S32.416,41.498,35.633,39z M24,5C13.507,5,5,13.507,5,24c0,5.386,2.25,10.237,5.85,13.694  C11.232,37.129,11.64,36.565,12,36c0,0,1.67-2.743,8-3c0.645,0,0.967-0.422,0.967-1.066h0.001C20.967,31.413,20.967,31,20.967,31  c0-0.13-0.021-0.247-0.027-0.373c-0.724-0.342-1.564-0.814-2.539-1.494c0,0-2.4-1.476-2.4-3.133c0,0-1-5.116-1-7  c0-4.644,1.986-9,9-9c6.92,0,9,4.356,9,9c0,1.838-1,7-1,7c0,1.611-2.4,3.133-2.4,3.133c-0.955,0.721-1.801,1.202-2.543,1.546  c-0.005,0.109-0.023,0.209-0.023,0.321c0,0-0.001,0.413-0.001,0.934h0.001C27.033,32.578,27.355,33,28,33c6.424,0.288,8,3,8,3  c0.36,0.565,0.767,1.129,1.149,1.694C40.749,34.237,43,29.386,43,24C43,13.507,34.493,5,24,5z"
+                                    fill-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <div class="text">Account</div>
+                    </a></li>
+                <li><a href="#">
+                        <div class="icon">
+                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55.996 55.996"
+                                style="enable-background:new 0 0 55.996 55.996;" xml:space="preserve">
+                                <g>
+                                    <path d="M42.998,31.996c-6.617,0-12,5.383-12,12s5.383,12,12,12s12-5.383,12-12S49.615,31.996,42.998,31.996z M42.998,53.996
   c-5.514,0-10-4.486-10-10s4.486-10,10-10s10,4.486,10,10S48.512,53.996,42.998,53.996z" />
-                  <path d="M48.998,42.996h-5v-5c0-0.553-0.447-1-1-1s-1,0.447-1,1v6c0,0.553,0.447,1,1,1h6c0.553,0,1-0.447,1-1
+                                    <path d="M48.998,42.996h-5v-5c0-0.553-0.447-1-1-1s-1,0.447-1,1v6c0,0.553,0.447,1,1,1h6c0.553,0,1-0.447,1-1
   S49.551,42.996,48.998,42.996z" />
-                  <path d="M54.555,2.165c-0.277-0.185-0.628-0.221-0.938-0.094L37.051,8.893l-16.585-8.78c-0.013-0.007-0.028-0.009-0.042-0.016
+                                    <path d="M54.555,2.165c-0.277-0.185-0.628-0.221-0.938-0.094L37.051,8.893l-16.585-8.78c-0.013-0.007-0.028-0.009-0.042-0.016
   c-0.046-0.022-0.093-0.038-0.142-0.053c-0.031-0.009-0.061-0.019-0.092-0.025c-0.051-0.01-0.102-0.013-0.154-0.016
   C20.006,0.002,19.977-0.001,19.946,0c-0.049,0.003-0.097,0.013-0.145,0.023c-0.034,0.007-0.068,0.011-0.102,0.021
   c-0.006,0.002-0.012,0.002-0.018,0.004l-18,6C1.274,6.184,0.998,6.566,0.998,6.996v43c0,0.321,0.154,0.623,0.415,0.812
@@ -286,44 +477,77 @@ m352 -301 c80 -18 153 -62 241 -145 150 -143 198 -260 187 -458 -6 -119 -30
   c0.116,0.043,0.234,0.063,0.352,0.063c0.404,0,0.786-0.247,0.937-0.648c0.193-0.518-0.068-1.094-0.585-1.288l-7.352-2.757V2.658
   l15,7.941v17.397c0,0.553,0.447,1,1,1s1-0.447,1-1v-17.33l15-6.177v27.507c0,0.553,0.447,1,1,1s1-0.447,1-1v-29
   C54.998,2.662,54.832,2.351,54.555,2.165z M2.998,7.717l16-5.333v40.892l-16,5.333V7.717z" />
-                </g>
-              </svg>
-            </div>
-            <div class="text">Orders</div>
-          </a></li>
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="text">Orders</div>
+                    </a></li>
 
-        <li><a href="#">
-            <div class="icon">
+                <li><a href="#">
+                        <div class="icon">
 
-              <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="256.000000pt" height="256.000000pt"
-                viewBox="0 0 256.000000 256.000000" preserveAspectRatio="xMidYMid meet">
+                            <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="256.000000pt"
+                                height="256.000000pt" viewBox="0 0 256.000000 256.000000"
+                                preserveAspectRatio="xMidYMid meet">
 
-                <g transform="translate(0.000000,256.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
-                  <path d="M1113 2225 c-201 -36 -383 -134 -524 -283 -359 -375 -357 -956 5
+                                <g transform="translate(0.000000,256.000000) scale(0.100000,-0.100000)" fill="#000000"
+                                    stroke="none">
+                                    <path d="M1113 2225 c-201 -36 -383 -134 -524 -283 -359 -375 -357 -956 5
 -1330 169 -176 393 -276 641 -289 455 -23 853 273 977 726 31 110 31 352 0
 462 -103 377 -397 649 -769 714 -102 18 -232 18 -330 0z m337 -109 c167 -35
 308 -112 431 -235 167 -168 249 -364 249 -601 0 -237 -82 -433 -249 -601 -168
 -167 -364 -249 -601 -249 -237 0 -433 82 -601 249 -124 125 -199 264 -236 436
 -23 110 -13 306 22 415 96 301 331 516 640 585 79 18 263 18 345 1z" />
-                  <path d="M1230 1655 l0 -55 50 0 50 0 0 55 0 55 -50 0 -50 0 0 -55z" />
-                  <path d="M1230 1170 l0 -320 50 0 50 0 0 320 0 320 -50 0 -50 0 0 -320z" />
-                </g>
-              </svg>
+                                    <path d="M1230 1655 l0 -55 50 0 50 0 0 55 0 55 -50 0 -50 0 0 -55z" />
+                                    <path d="M1230 1170 l0 -320 50 0 50 0 0 320 0 320 -50 0 -50 0 0 -320z" />
+                                </g>
+                            </svg>
 
-            </div>
-            <div class="text">About</div>
-          </a></li>
-      </ul>
-    </nav>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.auth0.com/js/auth0-spa-js/1.19/auth0-spa-js.production.js"></script>
-  <script src="js/utils.js"></script>
-  <script src="js/data.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/ui.js" defer></script>
+                        </div>
+                        <div class="text">About</div>
+                    </a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/8c934a1907.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.auth0.com/js/auth0/9.19.0/auth0.min.js"></script>
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/1.19/auth0-spa-js.production.js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/data.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/ui.js"></script>
+    <script defer>
+        window.addEventListener('load', async () => {
+            document.addEventListener("click", e => {
+                let anchor
+                if (e.target.matches(".navbar-list a")) {
+                    anchor = e.target
+                } else {
+                    anchor = e.target.closest(".navbar-list a")
+                }
+                if (anchor != null) {
+                    updateSection(anchor)
+                }
+            })
+
+            document.getElementById('cart-form').addEventListener('submit', async (e) => {
+                console.log('cart form submit');
+                e.preventDefault();
+                await requireAuth(validateOrder, window.location.href);
+            })
+            render_pizza(PIZZA);
+            render_cart(JSON.parse(lGet('cart')));
+            updateSection();
+            await configureClient();
+            await afterLogin();
+            updateProfile();
+        })
+    </script>
 </body>
 
 </html>

@@ -2,7 +2,7 @@ const PIZZA = [
     {
         'id':1,
         'name':"Margherita Pizza",
-        'price':"$ 2",
+        'price':2,
         'desc':"A hugely popular margherita, with a deliciously tangy single cheese topping",
         'veg':true,
         'max_order':10,
@@ -12,7 +12,7 @@ const PIZZA = [
     {
         'id':2,
         'name':"Double Cheese Margherita Pizza",
-        'price':"$ 2.50",
+        'price':2.50,
         'desc':"The ever-popular Margherita - loaded with extra cheese... oodies of it!",
         'veg':true,
         'max_order':10,
@@ -22,7 +22,7 @@ const PIZZA = [
     {
         'id':3,
         'name':"FARM HOUSE",
-        'price':"$ 5",
+        'price':5,
         'desc':"A pizza that goes ballistic on veggies! Check out this mouth watering overload of crunchy, crisp capsicum, succulent mushrooms and fresh tomatoes",
         'veg':true,
         'max_order':10,
@@ -32,7 +32,7 @@ const PIZZA = [
     {
         'id':4,
         'name':"CHICKEN SAUSAGE",
-        'price':"$ 2.5",
+        'price':2.5,
         'desc':"Chicken Sausage | Cheese",
         'veg':false,
         'max_order':10,
@@ -42,7 +42,7 @@ const PIZZA = [
     {
         'id':5,
         'name':"CHICKEN GOLDEN DELIGHT",
-        'price':"$ 3",
+        'price':3,
         'desc':"Mmm! Barbeque chicken with a topping of golden corn loaded with extra cheese. Worth its weight in gold!",
         'veg':false,
         'max_order':10,
@@ -82,3 +82,5 @@ const COUPON = [
         'code':'STOREPICK',
     },
 ]
+
+DELIVERYCHARGE = 5

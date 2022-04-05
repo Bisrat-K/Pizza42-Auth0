@@ -105,4 +105,6 @@ dist
 
 a0-variables.js
 auth_config.json
+mgmt_config.json
 *demo*
+*.env
