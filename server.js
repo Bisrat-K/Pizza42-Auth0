@@ -7,7 +7,7 @@ const jwksRsa = require("jwks-rsa");
 const axios = require('axios');
 const qs = require('qs');
 const { join } = require("path");
-const authConfig = require("./mgmt_config.json");
+const authConfig = require("./auth_config.json");
 const app = express();
 
 if (!authConfig.domain || !authConfig.audience) {
@@ -38,7 +38,7 @@ app.get("/api/external", checkJwt, (req, res) => {
 });
 
 app.get("/auth_config.json", (req, res) => {
-    res.sendFile(join(__dirname, "src", "auth_config.json"));
+    res.sendFile(join(__dirname, "auth_config.json"));
 });
 
 app.get("/api/time", (req, res) => {
