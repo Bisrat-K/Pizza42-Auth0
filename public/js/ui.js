@@ -81,6 +81,7 @@ async function updateSection(anchor = null, index = null) {
     } catch (err) {
         console.log(err)
     }
+    getId('main-container').scrollTop = 0;
 }
 
 function render_pizza(items) {
@@ -153,7 +154,7 @@ const render_orders = async () => {
     if (!mgmt) return null;
     await mgmt.getUser(user.sub, (err, res) => {
         if (err) k = null;
-        items = res.user_metadata.orders;
+        items = res.user_metadata.orders.reverse();
         ORDERS = items;
         console.log(res)
         if (!items) return;
@@ -169,11 +170,11 @@ const render_orders = async () => {
                         <span class="font-weight-bold d-block">
                             ${new Date(item.time).toLocaleString()}&nbsp;
                         </span>
-                        <span class="spec">$${item.address1}...</span>
+                        <span class="spec">${item.address1}...</span>
                     </div>
                 </div>
                 <div class="d-flex flex-row align-items-center">
-                    <span class="d-block ms-5 font-weight-bold">$${item.total}</span>
+                    <span class="d-block ms-5 font-weight-bold">$${item.total+DELIVERYCHARGE}</span>
                     <i class="fa fa-info ms-3 text-black-50" onclick='showOrderDetail(${i})'></i>
                 </div>
             </div>`

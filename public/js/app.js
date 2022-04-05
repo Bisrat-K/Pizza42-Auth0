@@ -1,4 +1,4 @@
-const createOrder = function(order) {
+const createOrder = async(order) => {
     getUser((k,...args)=>{
         meta = k.user_metadata
         if(!meta)meta = {}
@@ -7,6 +7,12 @@ const createOrder = function(order) {
         mgmt.patchUserMetadata(user.sub,meta,(err,res)=>{
             if(err)console.log(err)
             console.log(res)
+            render_orders()
+            alert("Order Successful!")
+            lSet('cart', JSON.stringify([]))
+            render_cart([])
+            updateSection(null,3);
+            return true
         })
     },order)
 }
@@ -43,7 +49,7 @@ const validateOrder =async () => {
         otime = new Date().toISOString()
     }
     order.time = otime
-    createOrder(order)
+    await createOrder(order)
 }
 
 const addToCart = (item) => {
