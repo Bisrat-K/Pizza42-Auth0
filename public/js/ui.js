@@ -20,17 +20,11 @@ const updateProfile = async () => {
         if (isAuthenticated) {
             console.log("> User is authenticated");
             const user = await auth0SPA.getUser();
-            if(!user.email_verified){
+            if (!user.email_verified) {
                 getId('user-text').innerText = 'Please verify your email'
-            }else{
+            } else {
                 getId('user-text').innerText = "Order a delicious pizza."
             }
-            //     getId('user-resend-verification').removeAttribute('hidden')
-            //     getId('user-order-pizza').setAttribute('hidden',true)
-            // }
-            //     getId('user-resend-verification').setAttribute('hidden',true)
-            //     getId('user-order-pizza').removeAttribute('hidden')
-            // }
             document.getElementById("profile-data").innerText = JSON.stringify(
                 user,
                 null,
@@ -118,13 +112,13 @@ function render_pizza(items) {
 }
 
 
-render_cart = async (items=null) => {
-    if(!items)return;
+render_cart = async (items = null) => {
+    if (!items) return;
     container = document.getElementById('cartcontainer')
     eachElement('.cart-item-count', (e) => e.innerText = items.length)
     container.innerHTML = ''
     total = 0
-    eachElement('.cart-delivery',(e)=>e.innerText = items.length>0?'$'+DELIVERYCHARGE:'$0')
+    eachElement('.cart-delivery', (e) => e.innerText = items.length > 0 ? '$' + DELIVERYCHARGE : '$0')
     items.forEach((item, i) => {
         container.innerHTML += `
             <div class="d-flex justify-content-between align-items-center mt-3 p-2 cart-items rounded" style="min-width:250px;">
@@ -134,7 +128,7 @@ render_cart = async (items=null) => {
                         <span class="font-weight-bold d-block">
                             ${item['name']}&nbsp;
                         </span>
-                        <span class="spec">${item['desc'].slice(0,20)}...</span>
+                        <span class="spec">${item['desc'].slice(0, 20)}...</span>
                     </div>
                 </div>
                 <div class="d-flex flex-row align-items-center">
@@ -142,12 +136,85 @@ render_cart = async (items=null) => {
                     <i class="fa fa-trash-o ms-3 text-black-50" onclick='removeFromCart(${item['id']})'></i>
                 </div>
             </div>`
-            total+=item['price']
+        total += item['price']
     });
-    eachElement('.cart-subtotal',(e)=>e.innerText = '$'+total);
-    items.length>0?total+=DELIVERYCHARGE:null;
-    eachElement('.cart-total',(e)=>e.innerText = '$'+total);
+    eachElement('.cart-subtotal', (e) => e.innerText = '$' + total);
+    items.length > 0 ? total += DELIVERYCHARGE : null;
+    eachElement('.cart-total', (e) => e.innerText = '$' + total);
 }
 
 
-var orderModal = new bootstrap.Modal(document.getElementById('order-details-modal'))
+const orderModal = new bootstrap.Modal(document.getElementById('order-details-modal'))
+
+var ORDERS = []
+
+const render_orders = async () => {
+    console.log('render_orders')
+    if (!mgmt) return null;
+    await mgmt.getUser(user.sub, (err, res) => {
+        if (err) k = null;
+        items = res.user_metadata.orders;
+        ORDERS = items;
+        console.log(res)
+        if (!items) return;
+        container = document.getElementById('ordercontainer')
+        eachElement('.order-item-count', (e) => e.innerText = items.length)
+        container.innerHTML = ''
+        items.forEach((item, i) => {
+            container.innerHTML += `
+            <div class="d-flex justify-content-between align-items-center mt-3 p-2 cart-items rounded" style="min-width:250px;" onclick='showOrderDetail(${i})'>
+                <div class="d-flex flex-row"><img class="rounded"
+                        src="" style="max-width:70px;max-height:50px; height:auto; width: auto;">
+                    <div class="ml-2">
+                        <span class="font-weight-bold d-block">
+                            ${new Date(item.time).toLocaleString()}&nbsp;
+                        </span>
+                        <span class="spec">$${item.address1}...</span>
+                    </div>
+                </div>
+                <div class="d-flex flex-row align-items-center">
+                    <span class="d-block ms-5 font-weight-bold">$${item.total}</span>
+                    <i class="fa fa-info ms-3 text-black-50" onclick='showOrderDetail(${i})'></i>
+                </div>
+            </div>`
+        });
+    });
+}
+
+const showOrderDetail = (i)=>{
+    odate = getId('mod-odate')
+    ono = getId('mod-ono')
+    ocontainer = getId('mod-ocontainer')
+    items = JSON.parse(ORDERS[i].items)
+    order = ORDERS[i]
+    total = 0
+    odate.innerHTML = new Date(order.time).toLocaleString()
+    ocontainer.innerHTML = ''
+    for(let j=0;j<items.length;j++){
+        console.log(items[j])
+        ocontainer.innerHTML += `
+        <div class="row">
+            <div class="col-md-8 col-lg-9">
+                <p>${items[j].name}</p>
+            </div>
+            <div class="col-md-4 col-lg-3">
+                <p>$ ${items[j].price}</p>
+            </div>
+        </div>`
+        total+=items[j]['price']
+    }
+    if(order.delivery){
+        ocontainer.innerHTML+=`
+            <div class="row">
+                <div class="col-md-8 col-lg-9">
+                    <p class="mb-0">Delivery</p>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <p class="mb-0">$ ${order.delivery}</p>
+                </div>
+            </div>`
+            total+=order.delivery
+    }
+    getId('mod-ototal').innerText = '$'+total
+    orderModal.show()
+}

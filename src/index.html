@@ -169,8 +169,6 @@
                                 <div class="buttons">
                                     <a class="btn btn-outline-primary px-4" id="user-order-pizza"
                                         onclick="updateSection(null,0)">Order a Pizza</a>
-                                    <a class="btn btn-outline-primary px-4" id="user-resend-verification"
-                                        onclick="resendVerification()" hidden>Resend Verification Email</a>
                                     <button class="btn btn-danger px-4 ms-3 btn-sm" onclick="logout()">Log Out</button>
                                 </div>
                             </div>
@@ -182,11 +180,29 @@
         <div id="s3">
             <!-- <div class="container-fluid py-2"> -->
             <h1 class="auth-invisible">Login to View Orders</h1>
-            <!-- <div class="auth-visible"> -->
-            <h1 class="auth-visible hidden">Orders:</h1>
-            <ul class="list-group list-group-flush auth-visible" id="list-orders">
-                <li class="list-group-item" onclick="showOrderDetails(item)">Cras justo odio</li>
-            </ul>
+            <div class="container mt-5 p-3 rounded cart auth-visible">
+                <div class="row no-gutters">
+                    <div class="col-md-12">
+                        <div class="product-details mr-2">
+                            <div class="d-flex flex-row align-items-center" onclick="updateSection(null,0)"><i
+                                    class="fa fa-long-arrow-left"></i><span class="ml-2">Go to Homepage</span></div>
+                            <hr>
+                            <h6 class="mb-0">Orders</h6>
+                            <div class="d-flex justify-content-between"><span>You have <span
+                                        class="order-item-count">0</span> orders.</span>
+                                <!-- <div class="d-flex flex-row align-items-center"><span class="text-black-50">Sort
+                                        by:</span>
+                                    <div class="price ml-2"><span class="mr-1">price</span><i
+                                            class="fa fa-angle-down"></i></div>
+                                </div> -->
+                            </div>
+                            <div id="ordercontainer">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="modal fade" id="order-details-modal" tabindex="-1" aria-labelledby="order-details-modal"
                 aria-hidden="true">
                 <div class="modal-dialog ">
@@ -205,42 +221,27 @@
                                     <div class="row">
                                         <div class="col mb-3">
                                             <p class="small text-muted mb-1">Date</p>
-                                            <p>10 April 2021</p>
+                                            <p id="mod-odate"></p>
                                         </div>
                                         <div class="col mb-3">
                                             <p class="small text-muted mb-1">Order No.</p>
-                                            <p>012j1gvs356c</p>
+                                            <p id="mod-ono">012j1gvs356c</p>
                                         </div>
                                     </div>
 
-                                    <div class="mx-n5 px-5 py-4" style="background-color: #f2f2f2;">
-                                        <div class="row">
-                                            <div class="col-md-8 col-lg-9">
-                                                <p>BEATS Solo 3 Wireless Headphones</p>
-                                            </div>
-                                            <div class="col-md-4 col-lg-3">
-                                                <p>£299.99</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-8 col-lg-9">
-                                                <p class="mb-0">Shipping</p>
-                                            </div>
-                                            <div class="col-md-4 col-lg-3">
-                                                <p class="mb-0">£33.00</p>
-                                            </div>
-                                        </div>
+                                    <div class="mx-n5 px-5 py-4" style="background-color: #f2f2f2;" id="mod-ocontainer">
                                     </div>
 
                                     <div class="row my-4">
                                         <div class="col-md-4 offset-md-8 col-lg-3 offset-lg-9">
-                                            <p class="lead fw-bold mb-0" style="color: var(--color2);">£262.99</p>
+                                            <p class="lead fw-bold mb-0" style="color: var(--color2);" id="mod-ototal">
+                                                $0.00/p>
                                         </div>
                                     </div>
 
-                                    <p class="lead fw-bold mb-4 pb-2" style="color: var(--color2);">Tracking Order</p>
+                                    <!-- <p class="lead fw-bold mb-4 pb-2" style="color: var(--color2);">Tracking Order</p> -->
 
-                                    <div class="row">
+                                    <!-- <div class="row">
                                         <div class="col-lg-12">
 
                                             <div class="horizontal-timeline">
@@ -271,8 +272,8 @@
                                             </div>
 
                                         </div>
-                                    </div>
-                                    <p class="mt-4 pt-2 mb-0">Want any help? <a onclick="updateSection(null,4)"
+                                    </div> -->
+                                    <p class="mt-4 pt-2 mb-0">Want any help? <a onclick="orderModal.hide();updateSection(null,4);"
                                             style="color: var(--color2);">Please contact us</a></p>
                                 </div>
                             </div>
@@ -534,18 +535,17 @@ m352 -301 c80 -18 153 -62 241 -145 150 -143 198 -260 187 -458 -6 -119 -30
                     updateSection(anchor)
                 }
             })
-
-            document.getElementById('cart-form').addEventListener('submit', async (e) => {
-                console.log('cart form submit');
-                e.preventDefault();
-                await requireAuth(validateOrder, window.location.href);
-            })
             render_pizza(PIZZA);
             render_cart(JSON.parse(lGet('cart')));
             updateSection();
             await configureClient();
             await afterLogin();
             updateProfile();
+        })
+        document.getElementById('cart-form').addEventListener('submit', async (e) => {
+            console.log('cart form submit');
+            e.preventDefault();
+            await requireAuth(validateOrder, window.location.href);
         })
     </script>
 </body>

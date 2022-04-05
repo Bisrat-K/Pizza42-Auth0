@@ -122,7 +122,8 @@ const afterLogin = async () => {
     try{
         user = await auth0SPA.getUser()
         if(user){
-            configureMgmt()
+            await configureMgmt()
+            render_orders()
         }
     }catch(e){
         console.log(e)
@@ -160,14 +161,4 @@ const patchUser = async (data,fn=(k,...a)=>console.log(k,a),...args) => {
         k = res;
         fn(k,...args);
     });
-}
-
-const resendVerification= async()=>{
-    // if(!mgmt)return null;
-    // await mgmt.resendVerificationEmail(user.sub,(err,res)=>{
-    //     if(err)k = null;
-    //     k = res;
-    //     fn(k,...args);
-    // });
-    console.log("resending verification email");
 }
