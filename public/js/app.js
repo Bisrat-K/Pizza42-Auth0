@@ -1,20 +1,40 @@
 const createOrder = async(order) => {
-    getUser((k,...args)=>{
-        meta = k.user_metadata
-        if(!meta)meta = {}
-        if(!meta.orders)meta.orders = []
-        meta.orders.push(order)
-        mgmt.patchUserMetadata(user.sub,meta,(err,res)=>{
-            if(err)console.log(err)
-            console.log(res)
-            render_orders()
-            alert("Order Successful!")
-            lSet('cart', JSON.stringify([]))
-            render_cart([])
-            updateSection(null,3);
-            return true
-        })
-    },order)
+    const token = await auth0SPA.getTokenSilently();
+    const user = await auth0SPA.getUser()
+    console.log(order);
+    const response = await fetch(`/api/orders/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(order)
+    });
+    console.log(response)
+    const responseData = await response.json();
+    console.log(responseData);
+    if(responseData.success){
+        render_orders()
+        alert("Order Successful!")
+        lSet('cart', JSON.stringify([]))
+        render_cart([])
+
+    }
+    // getUser((k,...args)=>{
+    //     meta = k.user_metadata
+    //     if(!meta)meta = {}
+    //     if(!meta.orders)meta.orders = []
+    //     meta.orders.push(order)
+    //     mgmt.patchUserMetadata(user.sub,meta,(err,res)=>{
+    //         if(err)console.log(err)
+    //         console.log(res)
+    //         lSet('cart', JSON.stringify([]))
+    //         render_cart([])
+    //         updateSection(null,3);
+    //         return true
+    //     })
+    // },order)
 }
 
 
@@ -40,15 +60,15 @@ const validateOrder =async () => {
     order.addressstate = addressstate
     order.total = items.reduce((acc, item) => acc + item.price, 0)
     order.delivery = DELIVERYCHARGE
-    try{
-        const response = await fetch("/api/time");
-        const responseData = await response.json();
-        otime = responseData.time
-    }catch(e){
-        console.log(e)
-        otime = new Date().toISOString()
-    }
-    order.time = otime
+    // try{
+    //     const response = await fetch("/api/time");
+    //     const responseData = await response.json();
+    //     otime = responseData.time
+    // }catch(e){
+    //     console.log(e)
+    //     otime = new Date().toISOString()
+    // }
+    // order.time = otime
     await createOrder(order)
 }
 

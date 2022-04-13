@@ -1,5 +1,5 @@
 {
-  "domain": "dev-zzfoi--v.us.auth0.com",
-  "clientId": "qXQa3GRKZgOKM7J4HXnGvLxJYTohpoAN",
-  "audience": "https://dev-zzfoi--v.us.auth0.com/api/v2/"
+    "domain": "dev-zzfoi--v.us.auth0.com",
+    "clientId": "VQKDAwR7cV74mWLFO3StekBvNRq3u88P",
+    "audience": "https://dev-zzfoi--v.us.auth0.com/api/v2/"
 }

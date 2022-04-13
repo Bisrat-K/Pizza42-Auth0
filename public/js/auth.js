@@ -92,7 +92,11 @@ const callApi = async () => {
         console.log(token);
         const response = await fetch("/api/external", {
             headers: {
+                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`
+            },
+            body: {
+                orders : 'hello'
             }
         });
 

@@ -154,7 +154,7 @@ const render_orders = async () => {
     if (!mgmt) return null;
     await mgmt.getUser(user.sub, (err, res) => {
         if (err) k = null;
-        items = res.user_metadata.orders.reverse();
+        items = res.app_metadata.orders.reverse();
         ORDERS = items;
         console.log(res)
         if (!items) return;
