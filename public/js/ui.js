@@ -190,6 +190,7 @@ const showOrderDetail = (i)=>{
     order = ORDERS[i]
     total = 0
     odate.innerHTML = new Date(order.time).toLocaleString()
+    ono.innerText = `p42_${user.sub.slice(-8)}_${i}`
     ocontainer.innerHTML = ''
     for(let j=0;j<items.length;j++){
         console.log(items[j])

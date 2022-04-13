@@ -1,7 +1,5 @@
 const createOrder = async(order) => {
     const token = await auth0SPA.getTokenSilently();
-    const user = await auth0SPA.getUser()
-    console.log(order);
     const response = await fetch(`/api/orders/`, {
         method: 'POST',
         headers: {
@@ -19,7 +17,7 @@ const createOrder = async(order) => {
         alert("Order Successful!")
         lSet('cart', JSON.stringify([]))
         render_cart([])
-
+        updateSection(null,3);
     }
     // getUser((k,...args)=>{
     //     meta = k.user_metadata
@@ -90,8 +88,4 @@ const removeFromCart =async (itemid) => {
     }
     await lSet('cart', JSON.stringify(CART))
     render_cart(CART)
-}
-
-const showOrderDetails = (order) => {
-    console.log(order)
 }
