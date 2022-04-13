@@ -68,9 +68,9 @@ app.post('/api/orders',checkJwt,async (req, res) => {
         if(!metadata.orders)metadata.orders = []
         metadata.orders.push(order)
         const update = await management.updateAppMetadata({ id }, metadata)
-        res.status(201).json({ message: 'Order received.', order, update,success:true })
+        res.status(201).json({ message: `Order Placed Successfully`, success:true })
     } catch (error) {
-        res.status(error.status ?? 500).json({ message: `Error: ${error.message}`, stack: error.stack ?? [], success:false})
+        res.status(error.status ?? 500).json({ message: `Error: ${error.message}`, success:false})
     }
 }
 );
