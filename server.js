@@ -8,7 +8,7 @@ const axios = require('axios');
 const qs = require('qs');
 const { join } = require("path");
 const authConfig = require("./auth_config.json");
-const mgmtConfig = require("./mgmt_config.json");
+// const mgmtConfig = require("./mgmt_config.json");
 const app = express();
 app.use(express.json({limit:'10mb'}))
 const ManagementClient = require('auth0').ManagementClient;
